@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirui Brian Kiplangat · IT Portfolio</title>
+  <!-- Font Awesome for icons (optional but adds visual clarity) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.5;
+      color: #1e2f40;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* card style */
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 2rem;
+      box-shadow: 0 8px 20px rgba(0, 20, 40, 0.04);
+      border: 1px solid #dde7f0;
+      transition: 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 28px rgba(0, 30, 60, 0.08);
+    }
+
+    /* header specific */
+    .header-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem 2rem;
+    }
+
+    .name-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .avatar-initials {
+      width: 70px;
+      height: 70px;
+      background: #0f3a5e;
+      color: white;
+      font-size: 1.7rem;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(14, 55, 90, 0.2);
+    }
+
+    .name-title h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0a2a44;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #3b5d81;
+      margin-top: 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .pill {
+      background: #dcebf9;
+      color: #0f3f66;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-bar {
+      background: #f5f9ff;
+      border-radius: 60px;
+      padding: 0.8rem 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.2rem;
+      font-size: 0.95rem;
+      border: 1px solid #cbddec;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1a3c5e;
+    }
+
+    .contact-item i {
+      width: 1.4rem;
+      color: #26648c;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted transparent;
+    }
+
+    a:hover {
+      border-bottom: 1px dotted #26648c;
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0f2d48;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-title i {
+      color: #26648c;
+      font-size: 2rem;
+      width: 2.2rem;
+    }
+
+    /* chips / tags */
+    .chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .chip {
+      background: #eaf1f9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1f466a;
+      border: 1px solid #cde0f0;
+    }
+
+    .skill-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-group h4 {
+      font-size: 1.1rem;
+      font-weight: 650;
+      color: #123a58;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .skill-group h4 i {
+      color: #26648c;
+      width: 1.6rem;
+    }
+
+    /* grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    /* education block */
+    .edu-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #0f2d48;
+    }
+
+    .edu-meta {
+      color: #4b688b;
+      font-weight: 500;
+    }
+
+    .course-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.6rem;
+      margin: 1rem 0 0.2rem;
+    }
+
+    /* projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-card {
+      background: #f9fcff;
+      border-radius: 20px;
+      padding: 1.4rem;
+      border: 1px solid #d0e2f2;
+    }
+
+    .project-card:hover {
+      background: white;
+      border-color: #9cbde0;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #103553;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-title i {
+      color: #26648c;
+    }
+
+    .project-desc {
+      color: #2a405b;
+      font-size: 0.92rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-tag {
+      background: #e1edfa;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #123f65;
+      display: inline-block;
+    }
+
+    /* strengths & referees */
+    .split-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .strengths-list {
+      list-style: none;
+    }
+
+    .strengths-list li {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .strengths-list li i {
+      color: #1c6d4b;
+      width: 1.6rem;
+      font-size: 1.3rem;
+      margin-top: 0.1rem;
+    }
+
+    .ref-box {
+      background: #f1f8ff;
+      border-radius: 24px;
+      padding: 1.8rem;
+      text-align: center;
+      border: 1px dashed #93b7da;
+    }
+
+    .ref-box i {
+      font-size: 2.8rem;
+      color: #1b5482;
+      opacity: 0.8;
+    }
+
+    hr {
+      border: 1px solid #d4e2f0;
+      margin: 1rem 0;
+    }
+
+    footer {
+      text-align: center;
+      color: #4d688b;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .grid-2, .split-2 {
+        grid-template-columns: 1fr;
+      }
+      .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .contact-bar {
+        width: 100%;
+        border-radius: 40px;
+        justify-content: space-around;
+      }
+      .name-title h1 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- header card with contact -->
+  <div class="card">
+    <div class="header-row">
+      <div class="name-section">
+        <div class="avatar-initials">KBK</div>
+        <div class="name-title">
+          <h1>Kirui Brian Kiplangat</h1>
+          <div class="subhead">
+            <span>Third‑year IT student</span>
+            <span class="pill"><i class="fa-regular fa-calendar-check" style="margin-right: 0.4rem;"></i>seeking attachment</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-bar">
+        <span class="contact-item"><i class="fa-solid fa-phone"></i> +254 705 796 884</span>
+        <span class="contact-item"><i class="fa-solid fa-envelope"></i> bkirui646@gmail.com</span>
+        <span class="contact-item"><i class="fa-solid fa-location-dot"></i> University of Embu</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- personal profile -->
+  <div class="card">
+    <div class="section-title"><i class="fa-regular fa-id-card"></i> Personal Profile</div>
+    <p style="font-size: 1.05rem; max-width: 950px; color: #1e3b58;">A highly motivated and detail-oriented third-year student pursuing a Bachelor of Science in Information Technology at the University of Embu. Possessing a solid foundation in programming, networking, database management and a strong passion for applying theoretical knowledge to real‑world challenges. Eager to secure an industrial attachment position to gain practical experience, develop professional skills, and contribute to the success of a dynamic IT department.</p>
+  </div>
+
+  <!-- education + technical skills (2 columns) -->
+  <div class="grid-2">
+    <!-- education card -->
+    <div class="card">
+      <div class="section-title" style="margin-bottom: 1rem;"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+      <div class="edu-header">
+        <span class="edu-title">BSc Information Technology</span>
+        <span class="edu-meta">exp. 2027</span>
+      </div>
+      <p style="font-weight: 500; color: #1b4d7a;">University of Embu, Embu, Kenya · Third year</p>
+      <div style="margin: 1.3rem 0 0.5rem;"><strong>Relevant coursework</strong></div>
+      <div class="course-list">
+        <span class="chip">Object‑Oriented Programming</span>
+        <span class="chip">Database Systems</span>
+        <span class="chip">Computer Networks</span>
+        <span class="chip">Web Development</span>
+        <span class="chip">System Analysis & Design</span>
+        <span class="chip">Operating Systems</span>
+        <span class="chip">Cyber Security</span>
+      </div>
+    </div>
+
+    <!-- technical skills card -->
+    <div class="card">
+      <div class="section-title" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-gear"></i> Technical Skills</div>
+      
+      <div class="skill-group">
+        <h4><i class="fa-solid fa-code"></i> Programming</h4>
+        <div class="chip-container">
+          <span class="chip">Basic Python</span>
+          <span class="chip">Basic Java</span>
+          <span class="chip">JavaScript (basic)</span>
+          <span class="chip">HTML5 / CSS3</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4><i class="fa-solid fa-database"></i> Databases</h4>
+        <div class="chip-container">
+          <span class="chip">Microsoft Access</span>
+          <span class="chip">SQL fundamentals</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4><i class="fa-solid fa-network-wired"></i> Networking & OS</h4>
+        <div class="chip-container">
+          <span class="chip">Basic network config</span>
+          <span class="chip">Windows 10/11</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4><i class="fa-solid fa-screwdriver-wrench"></i> Tools & other</h4>
+        <div class="chip-container">
+          <span class="chip">MS Office Suite</span>
+          <span class="chip">VS Code</span>
+          <span class="chip">Web design</span>
+          <span class="chip">System install</span>
+          <span class="chip">Troubleshooting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- projects (academic & personal) -->
+  <div class="card">
+    <div class="section-title"><i class="fa-regular fa-folder-open"></i> Projects (Academic & Personal)</div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-title"><i class="fa-regular fa-calendar"></i> University Timetable System</div>
+        <div class="project-desc">Presented to the class, demonstrating problem-solving and teamwork. Designed with database integration and basic OOP.</div>
+        <span class="project-tag">group project</span>
+      </div>
+      <div class="project-card">
+        <div class="project-title"><i class="fa-regular fa-file-code"></i> Personal portfolio website</div>
+        <div class="project-desc">Responsive site built with HTML, CSS, and JavaScript. Hosted on GitHub Pages to showcase web development skills.</div>
+        <span class="project-tag">hosted on GitHub</span>
+      </div>
+      <div class="project-card">
+        <div class="project-title"><i class="fa-solid fa-computer"></i> System installation & troubleshooting</div>
+        <div class="project-desc">Hands-on experience installing operating systems and diagnosing hardware/software issues in lab environment.</div>
+        <span class="project-tag">practical lab</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- strengths + referees (2 col) -->
+  <div class="split-2">
+    <div class="card">
+      <div class="section-title" style="margin-bottom: 1.2rem;"><i class="fa-regular fa-star"></i> Strengths & Key Attributes</div>
+      <ul class="strengths-list">
+        <li><i class="fa-regular fa-circle-check"></i> Strong analytical and problem-solving skills</li>
+        <li><i class="fa-regular fa-circle-check"></i> Excellent teamwork and collaboration abilities</li>
+        <li><i class="fa-regular fa-circle-check"></i> Quick learner with a strong desire to acquire new skills</li>
+        <li><i class="fa-regular fa-circle-check"></i> Good verbal and written communication skills</li>
+        <li><i class="fa-regular fa-circle-check"></i> Adaptable and able to work under minimal supervision</li>
+      </ul>
+    </div>
+    <div class="card" style="display: flex; align-items: center; justify-content: center;">
+      <div class="ref-box">
+        <i class="fa-regular fa-address-card"></i>
+        <h3 style="margin: 0.8rem 0 0.2rem; font-weight: 600;">Referees</h3>
+        <p style="font-size: 1.4rem; font-weight: 600; color: #174a77;">Available upon request</p>
+        <p style="margin-top: 0.7rem; color: #31658c;">Academic and professional references provided on request.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer / note -->
+  <footer>
+    <hr>
+    <p><i class="fa-regular fa-copy"></i> Kirui Brian Kiplangat — CV based portfolio. <span style="color:#3b6e9e;">#OpenToAttachment</span></p>
+  </footer>
+</div>
+</body>
+</html>
